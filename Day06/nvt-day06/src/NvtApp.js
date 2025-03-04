@@ -5,8 +5,12 @@ import NvtEventForm3 from './components/NvtEventForm3';
 import NvtEventForm4 from './components/NvtEventForm4';
 import NvtEventForm5 from './components/NvtEventForm5';
 
- class NvtApp extends Component {
-
+class NvtApp extends Component {
+  // Define the function to handle form submission
+  handleFormSubmit = (formData) => {
+    console.log("Received form data:", formData);
+    alert(`Student Name: ${formData.nvtName}\nAge: ${formData.nvtAge}`);
+  };
 
   render() {
     return (
@@ -17,10 +21,11 @@ import NvtEventForm5 from './components/NvtEventForm5';
         <NvtEventForm2 />
         <NvtEventForm3 />
         <NvtEventForm4 />
-        <NvtEventForm5 />
+        <NvtEventForm5 onNvtHandleSubmit={this.handleFormSubmit} />
       </div>
     );
   }
 }
+
 
 export default NvtApp;

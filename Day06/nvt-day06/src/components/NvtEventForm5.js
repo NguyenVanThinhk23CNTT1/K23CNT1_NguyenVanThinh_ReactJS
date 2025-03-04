@@ -12,31 +12,30 @@ class NvtEventForm5 extends Component {
     }
 
     // Hàm xử lý sự kiện change
-    nvtHandleChange = (event)=>{
-        // lấy tên điều khiển
+    nvtHandleChange = (event) => {
         let name = event.target.name;
-        // Lấy giá trị trên điều khiển đang thao tác
         let value = event.target.value;
 
-        // Cập nhật state
         this.setState({
-            [name]:value,
+            [name]: value,
         })
     }
+
     // Sự kiện khi submit form
-    nvtHandleSubmit = (ev)=>{
+    nvtHandleSubmit = (ev) => {
         ev.preventDefault();
         alert(this.state.nvtName + "\n" + this.state.nvtAge);
 
         // Chuyển dữ liệu trên form lên App component (NvtApp);
-        this.props.onnvtHandleSubmit(this.state);
+        this.props.onNvtHandleSubmit(this.state);
     }
+
     render() {
         return (
             <div className='alert alert-danger'>
                 <h2>Form Student Info </h2>
-                <NvtEventForm5 onnvtHandleSubmit={this.handleFormSubmit} /> 
-                <form>
+                
+                <form onSubmit={this.nvtHandleSubmit}>
                     <div>
                         <label htmlFor='nvtName'>Student Name:</label>
                         <input type='text' name='nvtName' id='nvtName' 
@@ -86,7 +85,7 @@ class NvtEventForm5 extends Component {
                             </select>
                         </label>
                     </div>
-                    <button onClick={this.nvtHandleSubmit}>Submit</button>
+                    <button type="submit">Submit</button>
                 </form>
             </div>
         );
